@@ -1,0 +1,20 @@
+{% extends 'Blog/index.html' %}
+
+{%block cuerpo%}
+<p>
+    {% if msj %}
+        {{msj}}
+    {% endif %}
+</p>
+
+
+<p>
+    <li>{{usuario.first_name}}</li>
+    <li>{{usuario.last_name}}</li>
+    <li>{{usuario.email}}</li>
+    <li><img src="{{usuario.imagen.url}}" alt="imagen de perfil"></li>
+    <li>{{usuario.link}}</li>
+</p>
+
+<a href={% url 'edit_user' %}>Editar datos</a>
+{%endblock cuerpo%}

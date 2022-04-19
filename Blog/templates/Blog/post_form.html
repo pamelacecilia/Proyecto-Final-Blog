@@ -1,0 +1,15 @@
+{% extends 'Blog/index.html' %}
+
+
+{%block cuerpo%}
+<p>
+<p>
+<form action="" method="post">
+    {% csrf_token %}
+    <table>
+        {{form.media}}
+        {{form.as_table}}
+    </table>
+    <button>Crear</button>
+</form>
+{%endblock cuerpo%}
