@@ -1,6 +1,6 @@
 from django.urls import path
 from django.contrib.auth.views import LogoutView
-from .views import *
+from .views import my_login,edit_user,user_data,register
 
 urlpatterns = [
     path('login/', my_login, name='login'),

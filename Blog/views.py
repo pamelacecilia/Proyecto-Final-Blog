@@ -2,8 +2,9 @@ from django.shortcuts import render, redirect
 from django.views.generic import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import UpdateView, DeleteView
-from .models import *
-from .form import *
+from .models import Post
+from .form import PostForm
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 def index(request):
@@ -38,12 +39,12 @@ class PostDetailView(DetailView):
     model = Post
     template_name = 'Blog/postdetalles.html'
 
-class PostUpdateView(UpdateView):
+class PostUpdateView(LoginRequiredMixin, UpdateView):
     model = Post
     success_url = '/post_listado'
     fields = ['titulo', 'subtitulo', 'cuerpo','fecha_creacion','imagen']
     
-class PostDeleteView(DeleteView):
+class PostDeleteView(LoginRequiredMixin, DeleteView):
     model = Post
     success_url = '/post_listado'
     
