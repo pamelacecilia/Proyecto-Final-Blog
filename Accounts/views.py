@@ -57,7 +57,8 @@ def edit_user(request):
             request.user.first_name = form.cleaned_data['first_name']
             request.user.last_name = form.cleaned_data['last_name']
             request.user.email = form.cleaned_data['email']
-            user_extension_logued.avatar = form.cleaned_data['avatar']
+            if form.cleaned_data['avatar'] is not None:
+                user_extension_logued.avatar = form.cleaned_data['avatar']
             user_extension_logued.link = form.cleaned_data['link']
             
             if form.cleaned_data['password1'] != '' and form.cleaned_data['password1'] == form.cleaned_data['password2']:

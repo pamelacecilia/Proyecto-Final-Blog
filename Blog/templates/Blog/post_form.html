@@ -4,12 +4,16 @@
 {%block cuerpo%}
 <p>
 <p>
-<form action="" method="post">
+<form action="" enctype="multipart/form-data" method="post">
     {% csrf_token %}
     <table>
         {{form.media}}
         {{form.as_table}}
     </table>
-    <button>Crear</button>
+    {% if object %}
+        <button>Editar</button>
+    {%else%}
+        <button>Crear</button>
+    {%endif%}
 </form>
 {%endblock cuerpo%}
